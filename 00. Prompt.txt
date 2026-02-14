@@ -1,0 +1,19 @@
+Turn this transcript into an advanced SQL documentation chapter.
+
+Requirements:
+- Structured sections with numbered headings
+- Clear explanations
+- SQL syntax blocks
+- Sample schemas
+- Sample data
+- Query outputs
+- Performance notes (if applicable)
+- Execution flow explanation
+- Common mistakes section
+- Real-world analytics use cases
+- Best practices
+- Final summary table
+- Keep it beginner-friendly but technically accurate
+
+Transcript:
+[PASTE TRANSCRIPT]
