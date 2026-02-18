@@ -14,6 +14,7 @@ Requirements:
 - Best practices
 - Final summary table
 - Keep it beginner-friendly but technically accurate
+- The note must be transcript accurate
 
 Transcript:
 [PASTE TRANSCRIPT]
