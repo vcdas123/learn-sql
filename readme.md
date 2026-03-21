@@ -24,4 +24,4 @@ Welcome to the SQL Learning Notes index.
 - [20. Window Functions (Analytical Functions) in SQL](<20. Window Functions (Analytical Functions) in SQL.md>)
 - [21. Window Aggregate Functions in SQL](<21. Window Aggregate Functions in SQL.md>)
 - [22. Window Ranking Functions in SQL](<22. Window Ranking Functions in SQL.md>)
-- [23. Window Value Functions (Analytical Functions) in SQL](<23. Window Value Functions (Analytical Functions) in SQL>)
+- [23. Window Value Functions (Analytical Functions) in SQL](<23. Window Value Functions (Analytical Functions) in SQL.md>)
