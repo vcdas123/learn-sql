@@ -1,4 +1,4 @@
-Turn this transcript into an advanced SQL documentation chapter.
+Turn this transcript into an advanced SQL documentation chapter in .md.
 
 Requirements:
 
