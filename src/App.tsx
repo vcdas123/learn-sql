@@ -13,7 +13,6 @@ import {
   Route, 
   useParams, 
   Link, 
-  useNavigate, 
   useLocation,
   Navigate
 } from "react-router-dom";
@@ -31,7 +30,6 @@ export interface Note {
 
 const AppContent: React.FC<{ notes: Note[] }> = ({ notes }) => {
   const { moduleId } = useParams<{ moduleId: string }>();
-  const navigate = useNavigate();
   const location = useLocation();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isDesktopSidebarOpen, setIsDesktopSidebarOpen] = useState(true);
