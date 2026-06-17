@@ -101,17 +101,17 @@ const AppContent: React.FC<{ notes: Note[] }> = ({ notes }) => {
       <div className="flex w-full overflow-x-hidden pt-16 lg:pt-0">
         <aside
           className={cn(
-            "fixed inset-y-0 left-0 z-40 w-80 bg-background lg:bg-surface border-r border-border transform transition-all duration-300 overflow-y-auto",
+            "fixed inset-y-0 left-0 z-40 w-80 bg-background border-r border-border transform transition-all duration-300 overflow-y-auto",
             isSidebarOpen ? "translate-x-0 shadow-2xl" : "-translate-x-full",
             isDesktopSidebarOpen ? "lg:translate-x-0" : "lg:-translate-x-full"
           )}
         >
           <div className="p-8 pt-0 relative">
-            <div className="sticky top-0 z-30 bg-background lg:bg-surface pt-8 pb-4 mb-4">
+            <div className="bg-background pt-8 pb-4 mb-4">
               {/* Desktop Collapse Button */}
               <button
                 onClick={() => setIsDesktopSidebarOpen(false)}
-                className="hidden lg:flex absolute top-8 right-0 p-2 hover:bg-white/5 rounded-xl text-slate-500 hover:text-white transition-all"
+                className="hidden lg:flex absolute top-8 right-4 p-2 hover:bg-white/5 rounded-xl text-slate-500 hover:text-white transition-all"
                 title="Collapse Sidebar"
               >
                 <ChevronRight className="w-5 h-5 rotate-180" />
@@ -128,7 +128,7 @@ const AppContent: React.FC<{ notes: Note[] }> = ({ notes }) => {
             </div>
 
             <nav className="space-y-1.5">
-              <div className="sticky top-[88px] z-20 bg-background lg:bg-surface py-4 -mx-4 px-4 mb-2">
+              <div className="bg-background py-4 -mx-4 px-4 mb-2">
                 <div className="flex items-center gap-2 px-3">
                   < BookOpen className="w-4 h-4 text-primary" />
                   <span className="text-[11px] font-bold text-secondary uppercase tracking-[0.2em]">
