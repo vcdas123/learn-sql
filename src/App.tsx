@@ -69,6 +69,17 @@ const AppContent: React.FC<{ notes: Note[] }> = ({ notes }) => {
     }
   }, [location.pathname, location.hash]);
 
+  // Clear hash when scrolling to top manually
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY < 10 && window.location.hash) {
+        window.history.replaceState(null, "", window.location.pathname);
+      }
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [location.pathname]);
+
   if (!selectedNote) return null;
 
   return (
@@ -317,7 +328,15 @@ const AppContent: React.FC<{ notes: Note[] }> = ({ notes }) => {
                     <Link
                       key={heading.id}
                       to={`/${selectedNote.id}#${heading.id}`}
-                      onClick={() => setIsNavModalOpen(false)}
+                      onClick={() => {
+                        setIsNavModalOpen(false);
+                        const element = document.getElementById(heading.id);
+                        if (element) {
+                          setTimeout(() => {
+                            element.scrollIntoView({ behavior: "smooth" });
+                          }, 10);
+                        }
+                      }}
                       className="block px-4 py-3.5 rounded-2xl text-[13px] font-medium text-slate-400 hover:text-primary hover:bg-primary/5 transition-all border border-transparent hover:border-primary/20"
                     >
                       {heading.text}

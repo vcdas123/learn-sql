@@ -31,6 +31,14 @@ const MarkdownPreview: React.FC<MarkdownPreviewProps> = ({ content, moduleId }) 
                 <span className="flex-1">{children}</span>
                 <Link 
                   to={`/${moduleId}#${id}`} 
+                  onClick={() => {
+                    const element = document.getElementById(id);
+                    if (element) {
+                      setTimeout(() => {
+                        element.scrollIntoView({ behavior: "smooth" });
+                      }, 10);
+                    }
+                  }}
                   className="opacity-0 group-hover:opacity-30 hover:!opacity-100 transition-all text-primary font-mono text-sm"
                   aria-label={`Link to ${text}`}
                 >
