@@ -1,8 +1,4 @@
 import React, { useState, useMemo, useEffect } from "react";
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { Menu, X, ChevronRight, Terminal, BookOpen } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { clsx, type ClassValue } from "clsx";
@@ -16,6 +12,7 @@ import {
   useLocation,
   Navigate
 } from "react-router-dom";
+import MarkdownPreview from "./components/MarkdownPreview";
 
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -220,65 +217,10 @@ const AppContent: React.FC<{ notes: Note[] }> = ({ notes }) => {
                 </div>
               </div>
 
-              <ReactMarkdown
-                remarkPlugins={[remarkGfm]}
-                components={{
-                  h2: ({ node, children, ...props }) => {
-                    const text = React.Children.toArray(children).join("");
-                    const id = text
-                      .toLowerCase()
-                      .replace(/[^\w\s-]/g, "")
-                      .replace(/\s+/g, "-");
-                    return (
-                      <h2 id={id} {...props} className="scroll-mt-24 group flex items-center gap-3">
-                        <span className="flex-1">{children}</span>
-                        <Link 
-                          to={`/${selectedNote.id}#${id}`} 
-                          className="opacity-0 group-hover:opacity-30 hover:!opacity-100 transition-all text-primary font-mono text-sm"
-                          aria-label={`Link to ${text}`}
-                        >
-                          #
-                        </Link>
-                      </h2>
-                    );
-                  },
-                  table: ({ node, ...props }) => (
-                    <div className="table-wrapper">
-                      <table {...props} />
-                    </div>
-                  ),
-                  code({
-                    inline,
-                    className,
-                    children,
-                    ...props
-                  }: any) {
-                    const match = /language-(\w+)/.exec(className || "");
-                    
-                    return !inline && match ? (
-                      <div className="relative group my-8 bg-[#0d1117] rounded-xl overflow-hidden">
-                        <div className="absolute top-2 right-4 px-2 py-1 rounded bg-white/10 text-[10px] font-bold text-slate-400 uppercase tracking-widest z-10 group-hover:text-blue-400 transition-colors">
-                          {match[1]}
-                        </div>
-                        <SyntaxHighlighter
-                          style={vscDarkPlus}
-                          language={match[1]}
-                          PreTag="div"
-                          className="m-0! p-6! bg-[#0d1117]! text-sm!"
-                        >
-                          {String(children).replace(/\n$/, "")}
-                        </SyntaxHighlighter>
-                      </div>
-                    ) : (
-                      <code className={className} {...props}>
-                        {children}
-                      </code>
-                    );
-                  },
-                }}
-              >
-                {selectedNote.content}
-              </ReactMarkdown>
+              <MarkdownPreview 
+                content={selectedNote.content} 
+                moduleId={selectedNote.id} 
+              />
             </motion.div>
 
             {/* Footer Navigation */}
